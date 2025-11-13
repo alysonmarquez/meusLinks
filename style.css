@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: white;
+    --background: #020223;
+    --strock-color:rgba(103, 88, 88, 0.5);
+    --background-links: rgba(0, 0, 0, 0.1);
+    --buttonDarkModeBg-url: url(./imgs/stars.svg);    
+}
+
+.lightColor{
+    --text-color:rgb(7, 7, 7);
+    --background: #E8E0D9;
+    --strock-color:rgba(0, 0, 0, 0.5);
+    --background-links: rgba(255, 255, 255, 0.1);
+    --buttonDarkModeBg-url: url(./imgs/sun.svg);
+}
+
+body{
+    background-color: var(--background);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+#container{
+    width: 100vw;
+    height: 712px;
+    margin: auto;
+    padding-top: 56px;
+    position: relative;
+    
+}
+
+#perfil{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    background: url('imgs/alyson.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+#perfil::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Aumenta ainda mais a área de transição */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7), rgb(0, 0, 0));
+    
+}
+
+#perfil p{
+    margin-top: 8px;
+    line-height: 24px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7em;
+    
+}
+
+
+#container ul{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+/* Button Dark Mode */
+
+#buttonDarkMode{
+    cursor: pointer;
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+}
+
+#buttonDarkMode button{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background: rgb(241, 239, 239) var(--buttonDarkModeBg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    animation: slideBack 0.4s;
+}
+
+
+
+
+#buttonDarkMode span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background-color: var(--background);
+    border: 1px solid var(--strock-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+    transition: 1s;
+}
+
+.lightColor #buttonDarkMode button{
+    animation: slideButtom 0.5s forwards;
+}
+
+
+/*LINKS BOTOES*/
+
+ul{
+    margin-top: 15px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #000000;
+    
+    
+}
+
+ul::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+}
+
+
+ul li a{
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 24px;
+    background: var(--background-links);
+    border: 1px solid var(--strock-color);
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+ul li a:hover{
+    background:rgba(42, 10, 227, 0.17);
+    border: 1.5px solid var(--text-color);
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    
+}
+
+.dropdown-content a { 
+    display: block;
+}
+
+.dropdown.show .dropdown-content{
+    max-height: 300px;
+}
+
+
+
+.copy{
+    padding: 25px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes slideButtom{
+    from{
+        left: 0;
+    }
+    to{
+        left: 50%;
+    }
+}
+
+@keyframes slideBack{
+    from{
+        left: 50%;
+    }
+    to{
+        left: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 2800px) {
+    
+
+    #buttonDarkMode{
+        display: none;
+    }
+
+    body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+    }
+
+    #container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 560px;
+        height: 812px;
+        border: 2px solid white;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    #perfil img{
+        width: 312px;
+        line-height: 24px;
+        border: 2.5px solid var(--strock-color);
+        border-radius: 50%;
+    }
+    
+}
